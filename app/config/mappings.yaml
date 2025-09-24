@@ -1,0 +1,27 @@
+patterns:
+  - regex: "\\bSBOM\\b|software supply chain|dependency review|provenance|artifact signing|SLSA"
+    maps_to:
+      - { framework: "SSDF", control: "PW.4", reason: "SBOM/provenance implies managing dependencies and artifacts" }
+      - { framework: "800-53", control: "SA-12", reason: "Supply chain protection" }
+      - { framework: "800-171", control: "3.4.3", reason: "Control of software configurations and components" }
+
+  - regex: "\\bCI/CD\\b|pipeline|build|GitOps"
+    maps_to:
+      - { framework: "SSDF", control: "PW.2", reason: "Secure build and delivery pipelines" }
+      - { framework: "800-53", control: "CM-3", reason: "Configuration change control in pipelines" }
+
+  - regex: "\\bSAST\\b|\\bDAST\\b|security testing|code scanning"
+    maps_to:
+      - { framework: "SSDF", control: "RV.1", reason: "Review and verify artifacts" }
+      - { framework: "800-53", control: "RA-5", reason: "Vulnerability scanning" }
+      - { framework: "800-171", control: "3.14.1", reason: "Identify and fix vulnerabilities" }
+
+  - regex: "\\bIaC\\b|Terraform|CloudFormation|Kubernetes|Helm|container"
+    maps_to:
+      - { framework: "SSDF", control: "PS.3", reason: "Secure infrastructure as code and platforms" }
+      - { framework: "800-53", control: "CM-2", reason: "Baseline configurations for systems" }
+
+  - regex: "\\bCUI\\b|\\bPII\\b|privacy|data protection"
+    maps_to:
+      - { framework: "800-171", control: "3.1.3", reason: "Control access to CUI" }
+      - { framework: "800-53", control: "SI-10", reason: "Information input validation/protection" }

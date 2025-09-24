@@ -1,0 +1,25 @@
+include_terms:
+  - SSDF
+  - SBOM
+  - SLSA
+  - CI/CD
+  - pipeline
+  - SAST
+  - DAST
+  - IaC
+  - Kubernetes
+  - container
+  - code review
+  - supply chain
+  - dependency
+  - CUI
+  - PII
+  - 800-53
+  - 800-171
+  - 800-218
+  - provenance
+  - signing
+  - artifact
+exclude_terms:
+  - physical facility only
+  - personnel only

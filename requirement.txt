@@ -1,0 +1,10 @@
+openai>=1.40.0
+requests>=2.32.3
+trafilatura>=1.9.0
+pdfplumber>=0.11.4
+PyYAML>=6.0.2
+beautifulsoup4>=4.12.3
+fastapi>=0.114.2
+uvicorn>=0.30.6
+PyGithub>=2.4.0
+GitPython>=3.1.43
