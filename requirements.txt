@@ -8,3 +8,5 @@ fastapi>=0.114.2
 uvicorn>=0.30.6
 PyGithub>=2.4.0
 GitPython>=3.1.43
+python-dotenv
+fastmcp>=2.0.0

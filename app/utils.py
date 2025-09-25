@@ -26,7 +26,7 @@ def openai_chat(system: str, user: str, json_mode: bool = False) -> Any:
         raise RuntimeError("OPENAI_API_KEY not set")
     client = OpenAI(api_key=api_key)
 
-
+    print("Awaiting GPT's response...")
     resp = client.chat.completions.create(
         model="gpt-4-turbo",
         messages=[
@@ -36,8 +36,8 @@ def openai_chat(system: str, user: str, json_mode: bool = False) -> Any:
         response_format={"type": "json_object"} if json_mode else None,
         temperature=1,
     )
+    print("Received")
     content = resp.choices[0].message.content
-    print(content)
     if json_mode:
         try:
             return json.loads(content)
