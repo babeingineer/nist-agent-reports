@@ -1,0 +1,4 @@
+NIST just released Revision 4 of Special Publication 800-63, Digital Identity Guidelines, which intends to respond to the changing digital landscape that has emerged since the last major revision of this suite was published by NIST in 2017.
+The new guidelines explain the process and technical requirements for meeting digital identity assurance levels for identity proofing, authentication, and federation—including requirements for security and privacy, as well as considerations for improved customer experience of digital identity solutions and technology. There are also many substantial content changes to the entire suite of documents.
+Questions? Send us an email: [email protected].
+Security and Privacy: identity & access management
