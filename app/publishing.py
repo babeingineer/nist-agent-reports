@@ -153,11 +153,12 @@ class MCPGitHubPublisher:
 
             # 2) Create/update files on the branch
             for path, content in files.items():
+                repo_path = str(path).replace("\\", "/").lstrip("./")
                 await self._call(client, upsert_file_tool, {
                     "owner": self.owner,
                     "repo": self.repo,
                     "branch": branch,
-                    "path": path,
+                    "path": repo_path,
                     "content": content,
                     "message": commit_message,
                 })
