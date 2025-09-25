@@ -7,19 +7,18 @@ The workflow collects recent publications, extracts and filters content relevant
 
 ## Requirements
 
-* Python **3.11+**
+* Python **3.11+** (if running locally)
 * A GitHub repository you can push to
 * A GitHub **token** with:
 
   * `repo` scope (if using a Personal Access Token), or
   * `contents:write` and `pull_requests:write` (if using a GitHub App installation token)
 * An **OpenAI API key** for filtering/mapping/summarization
+* (Optional) **Docker** if you want to run in a container
 
 ---
 
-## Installation
-
-Clone this repo and install dependencies:
+## Installation (local Python)
 
 ```bash
 git clone https://github.com/babeingineer/nist-agent-reports.git
@@ -49,73 +48,78 @@ pip install -r requirements.txt
 | ------------- | ------- | ------------------- |
 | `GITHUB_BASE` | `main`  | Base branch for PRs |
 
-#### Bash example
-
-```bash
-export OPENAI_API_KEY="sk-..."
-export GITHUB_REPO="owner/repo"
-export MCP_GITHUB_URL="https://api.githubcopilot.com/mcp/"
-export MCP_GITHUB_AUTH="bearer"
-export MCP_GITHUB_TOKEN="ghp_xxx..."
-export GITHUB_BASE="main"
-```
-
-#### PowerShell example
-
-```powershell
-$env:OPENAI_API_KEY   = "sk-..."
-$env:GITHUB_REPO      = "owner/repo"
-$env:MCP_GITHUB_URL   = "https://api.githubcopilot.com/mcp/"
-$env:MCP_GITHUB_AUTH  = "bearer"
-$env:MCP_GITHUB_TOKEN = "ghp_xxx..."
-$env:GITHUB_BASE      = "main"
-```
-
 ---
 
 ### YAML Config Files
 
 Located under `app/config/`:
 
-* **`ontology.yaml`**
-  Defines the domain concepts to track (e.g., software supply chain, CI/CD, PII handling).
-  You can expand or modify these to adjust what the filter/mapper considers “relevant” content.
+* **`ontology.yaml`** — domain concepts to track (e.g., CI/CD, SBOM, supply chain).
+* **`mappings.yaml`** — maps filtered findings to NIST control families (800-53, 800-171, SSDF).
 
-* **`mappings.yaml`**
-  Defines how filtered findings map to NIST control families (800-53, 800-171, SSDF).
-  You can edit this to align summaries with your organization’s compliance framework.
-
-> **Tip:** If you extend `ontology.yaml` or `mappings.yaml`, rerun the workflow — the new definitions will automatically affect filtering and mapping.
+You can edit these to customize what the workflow considers relevant and how it maps to compliance frameworks.
 
 ---
 
-## Usage
+## Usage (local)
 
-### One-shot (CLI)
+### CLI
 
 ```bash
 python app/main.py --topic "NIST SP 800 updates" --limit 5
 ```
 
-This will:
-
-1. Discover up to 5 recent NIST SP 800 updates
-2. Extract content to Markdown
-3. Filter for software/IT relevance
-4. Map to NIST controls (using `mappings.yaml`)
-5. Generate a summary
-6. Open a PR in `GITHUB_REPO` with:
-
-   * `docs/summaries/YYYY-MM-DD-nist-summary.md`
-   * `sources/YYYY-MM-DD/*.md`
-
-### Run as REST API
+### REST API
 
 ```bash
 python app/main.py --serve
 ```
 
 Call it:
+
+```bash
+curl -X POST http://localhost:8000/run \
+  -H 'content-type: application/json' \
+  -d '{"topic":"NIST SP 800 updates","limit":5}'
+```
+
+---
+
+## Usage with Docker
+
+### Build the image
+
+```bash
+docker build -t nist-agent .
+```
+
+### Run once (CLI mode)
+
+```bash
+docker run --rm \
+  -e OPENAI_API_KEY=sk-... \
+  -e GITHUB_REPO=owner/repo \
+  -e MCP_GITHUB_URL=https://api.githubcopilot.com/mcp/ \
+  -e MCP_GITHUB_AUTH=bearer \
+  -e MCP_GITHUB_TOKEN=ghp_xxx... \
+  nist-agent \
+  python app/main.py --topic "NIST SP 800 updates" --limit 5
+```
+
+### Run as API server
+
+```bash
+docker run --rm -p 8000:8000 \
+  -e OPENAI_API_KEY=sk-... \
+  -e GITHUB_REPO=owner/repo \
+  -e MCP_GITHUB_URL=https://api.githubcopilot.com/mcp/ \
+  -e MCP_GITHUB_AUTH=bearer \
+  -e MCP_GITHUB_TOKEN=ghp_xxx... \
+  nist-agent \
+  python app/main.py --serve
+```
+
+Then call:
 
 ```bash
 curl -X POST http://localhost:8000/run \
