@@ -1,0 +1,14 @@
+The NIST National Cybersecurity Center of Excellence (NCCoE) has published an initial public draft of NIST Cybersecurity White Paper (CSWP) 48, "Mappings of Migration to PQC Project Capabilities to Risk Framework Documents." Comments are due October 20, 2025.
+This publication describes the basic definitions, properties, and applications of KEMs and provides recommendations for implementing and using KEMs securely.
+The final release of Special Publication 1800-37, Addressing Visibility Challenges with TLS 1.3 within the Enterprise, is now available.
+NIST is pleased to release the initial public draft of Internal Report (IR) 8588, A Community-Driven Differential Privacy Deployment Registry. The public comment period is open through November 14, 2025.
+This webinar presents a new project to develop NIST security control overlays for AI systems. These overlays adapt, tailor, and supplement the SP 800-53 controls to address AI-specific concerns, such as model integrity, data provenance, adversarial robustness, and transparency without reinventing the wheel.
+The initial public draft of NIST Cybersecurity White Paper (CSWP) 37B, Automation of the NIST Cryptographic Module Validation Program: April 2025 Status Report, is now available for public comment through October 10, 2025.
+NIST has published final guidelines for implementing Multi-Factor Authentication (MFA) for Criminal Justice Information Systems (CJIS), in NIST Internal Report (IR) 8523.
+NIST is planning a second revision of SP 800-90A to reflect advancements in cryptographic research and maintain consistency across related standards. A public comment period on all aspects of the current SP 800-90A will be open until November 4, 2025.
+NIST has published Internal Report (IR) 8558, Report on the Design-A-Thon: Designing Effective and Accessible Approaches for Digital Product Cybersecurity Education and Awareness.
+NIST’s National Cybersecurity Center of Excellence (NCCoE) has published NIST Internal Report (NIST IR) 8349: Methodology for Characterizing Network Behavior of Internet of Things Devices.
+NIST has issued Special Publication (SP) 800-53 Release 5.2.0, Security and Privacy Controls for Information Systems and Organizations.
+NIST has released Special Publication (SP) 800-232, Ascon-Based Lightweight Cryptography Standards for Constrained Devices: Authenticated Encryption, Hash, and Extendable Output Functions.
+NIST's NCCoE has posted the second public draft of NIST IR 8536, "Supply Chain Traceability: Manufacturing Meta-Framework," for public comment. The comment period is open through October 3, 2025.
+* "Relevance" merely indicates the search engine's score for a document. It is based on the search parameters and information in the document's detailed record.
